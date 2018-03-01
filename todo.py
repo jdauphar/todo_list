@@ -2,10 +2,10 @@ import warnings
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore",category=DeprecationWarning)
-    from bottle import get, post, run, debug, default_app, request, template, static_file 
+    from bottle import get, post, run, debug, default_app, request, template, static_file
 
-import mock_task_list as task_list
-#import mongo_task_list as task_list
+#import mock_task_list as task_list
+import mongo_task_list as task_list
 
 show_completed = True
 
@@ -51,7 +51,7 @@ def get_hide_completed():
     global show_completed
     show_completed = False
     return get_task_list()
-    
+
 @get('/show-completed')
 def get_show_completed():
     global show_completed
@@ -62,15 +62,15 @@ def get_show_completed():
 def server_static(filepath):
     print(filepath)
     return static_file(filepath, root='./static')
-
+"""
 def setup():
     task_list.save_task({'description' : "This is a test task.", 'status' : "0"})
     task_list.save_task({'description' : "This is another test task.", 'status' : "0"})
     task_list.save_task({'description' : "This is a completed task.", 'status' : "1"})
     task_list.save_task({'description' : "This is an active task.", 'status' : "0"})
+"""
 
-setup()
-#application = default_app()
-debug(True)
-run(host='0.0.0.0', port=8080)
+application = default_app()
+#debug(True)
+#run(host='0.0.0.0', port=8080)
 
