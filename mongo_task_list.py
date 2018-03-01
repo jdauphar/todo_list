@@ -4,9 +4,9 @@ import private
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
-#connectString = "mongodb://{u}:{p}@ds249418.mlab.com:49418/cloudapps"
-connectString = "mongodb://Admin:slickrick@ds249418.mlab.com:49418/cloudapps"
-#connectString = connectString.format(u=private.mongo_username, p=private.mongo_password)
+connectString = "mongodb://{u}:{p}@ds249418.mlab.com:49418/cloudapps"
+
+connectString = connectString.format(u=private.mongo_username, p=private.mongo_password)
 client = MongoClient(connectString)
 
 def get_tasks():
